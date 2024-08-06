@@ -8,7 +8,7 @@ Furthermore, the system offers functionalities for the management of site resour
 ## Architecture
 The system architecture is outlined below:
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 The developed components are:
 * the central server\

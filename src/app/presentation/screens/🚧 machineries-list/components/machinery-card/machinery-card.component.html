@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+
+  }
+</style>
+
+
+<div class="card-container">
+  <!--     (mousemove)="onMouseMove($event)"-->
+  <!--     (mouseleave)="onMouseLeave()"-->
+  <!--     [style.transform]="transformStyle()">-->
+  <div class="flex-horizontal" style="gap: 16px;">
+    <h5>{{machinery.name}}</h5>
+    <div class="flex-horizontal" style="gap: 8px;">
+<!--      <h5 style="-->
+<!--      background: rgba(255,227,210,0.6);-->
+<!--      color: rgba(133,51,0,0.6);-->
+<!--      padding: 4px;-->
+<!--      padding-left: 8px;-->
+<!--      padding-right: 8px;-->
+<!--      border-radius: 4px;-->
+<!--      font-size: 12px;-->
+<!--      font-weight: 600;-->
+<!--      white-space: nowrap;-->
+<!--      ">{{vehicle.state}}</h5>-->
+<!--      <h5 style="-->
+<!--      background: rgba(87,87,87,0.6);-->
+<!--      color: #eeeeee;-->
+<!--      padding: 4px;-->
+<!--      padding-left: 8px;-->
+<!--      padding-right: 8px;-->
+<!--      border-radius: 4px;-->
+<!--      font-size: 12px;-->
+<!--      font-weight: 600;-->
+<!--      white-space: nowrap;-->
+<!--      ">{{vehicle.drivingLicence}}</h5>-->
+    </div>
+  </div>
+  <div style="
+
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  ">
+    <h5 style="flex-grow: 1;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+        class="{{machineryStatusClass()}}"
+    >{{machinery.state}}</h5>
+    <h5 style="color: #000; display: flex; align-items: center; gap: 4px;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+        class="{{machineryStatusClass()}}"
+    >
+      <span class="material-symbols-outlined" style="font-size: 10px;">settings_input_antenna</span>{{machinery.beaconsAssociated.length}}
+    </h5>
+  </div>
+
+
+  <div class="flex-horizontal" style="gap: 16px; justify-content: space-between">
+
+    <div class="flex-vertical alarm-info">
+      <label>Dimensions</label>
+      <h3>{{machinery.spec.dimensions}}</h3>
+    </div>
+
+    <div class="flex-vertical alarm-info">
+      <label>Maximum Load</label>
+      <h3>{{machinery.spec.mass}} kg</h3>
+    </div>
+
+    <div class="flex-vertical alarm-info">
+      <label>Operative speed</label>
+      <h3>{{machinery.spec.operatingSpeed}} km/h</h3>
+    </div>
+
+    <div class="flex-vertical alarm-info">
+      <label>Required Licence</label>
+      <h3>{{machinery.getRequiredLicence()}}</h3>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>

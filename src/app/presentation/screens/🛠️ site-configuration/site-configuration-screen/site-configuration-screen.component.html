@@ -1,0 +1,151 @@
+
+<body>
+<app-navigation-section></app-navigation-section>
+<app-text-title [title]="'Site configuration'"></app-text-title>
+
+
+<form style="margin-top: 24px;">
+  <table>
+    <thead>
+      <tr>
+        <th>MACHINERY</th>
+        <th>TYPE</th>
+        <th>REQUIRED LICENSE</th>
+        <th>ENABLED OPERATORS</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+
+      <tr *ngFor="let machinerySelection of machinerySelectionList" @fadeInOut>
+        <td>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; border-radius: 8px;" [class]="machinerySelection.selectedDrivers.length == 0 ? 'inactive-machinery' : 'active-machinery'"></div>
+            {{machinerySelection.name}}
+          </div>
+        </td>
+        <td>{{machinerySelection.type.name}}</td>
+        <td>
+          {{machinerySelection.type.requiredSpecificLicence ?  machinerySelection.type.name+' Licence' : machinerySelection.type.generalLicence+' Licence'}}
+        </td>
+        <td>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+
+
+            <div *ngFor="let selectedDriver of machinerySelection.selectedDrivers" @heightAnimation
+              style="
+                      //background: #ccf1ff;
+                      //color: #224e5e;
+                      padding: 4px;
+                      padding-left: 8px;
+                      padding-right: 4px;
+                      border-radius: 4px;
+                      font-size: 12px;
+                      font-weight: 600;
+                      white-space: nowrap;
+
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      gap: 10px;
+
+                    "
+              class="tag">
+              {{selectedDriver.name + ' ' + selectedDriver.surname}}
+              <span *ngIf="!isTodayConfiguration" (click)="removeWorkerFromSelection(selectedDriver.id, machinerySelection.id)" style="cursor:pointer;font-size: 20px;" class="material-symbols-outlined">
+                  close
+                </span>
+            </div>
+
+            <div *ngIf="machinerySelection.availableDrivers.length != 0 && !isTodayConfiguration" id="add-option-button" style="position: relative;">
+              <!-- Div che funge da etichetta personalizzata -->
+              <div style="
+
+                    //background: #ccf1ff;
+                    //color: #224e5e;
+                    padding: 4px;
+                    padding-left: 8px;
+                    padding-right: 4px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    white-space: nowrap;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;"
+                   class="tag">
+                <span style="font-size: 20px;" class="material-symbols-outlined">
+                  add
+                </span>
+              </div>
+              <!-- Select nascosto visivamente -->
+              <select (change)="onWorkerSelected($event)" id="selectInput" style="cursor: pointer; position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%;">
+                <!-- Opzioni del select -->
+                <option value="" disabled selected hidden>No worker available</option>
+                <option *ngFor="let availableDriver of machinerySelection.availableDrivers" value="{{machinerySelection.id}}_{{availableDriver.id}}">{{availableDriver.name + ' ' + availableDriver.surname}}</option>
+              </select>
+
+
+            </div>
+
+          </div>
+        </td>
+      </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tbody>
+    <tfoot style="background: transparent; padding: 0; margin:0;">
+      <tr style="background: transparent; padding: 0; margin:0;">
+        <td style="background: transparent; padding: 0; margin:0;"></td>
+        <td style="background: transparent; padding: 0; margin:0;"></td>
+        <td style="background: transparent; padding: 0; margin:0;"></td>
+        <td style="background: transparent; padding: 0; margin:0;">
+          <div style="display: flex; justify-content: end; margin-right: 16px;">
+            <p style="margin: 0; font-size: 14px;">Configurazione del <b>{{lastConfigDate}}</b></p>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+
+
+
+  <input *ngIf="!isTodayConfiguration" [disabled]="isUpdateSiteConfigurationButtonDisabled" (click)="updateSiteConfiguration()" type="button" value="{{'Update site configuration'}}" style="width: 360px; padding-left: 16px; padding-right: 16px;margin-top: 32px; margin-left: 32px; margin-right: 32px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8); cursor: pointer">
+
+</form>
+
+
+
+
+
+</body>

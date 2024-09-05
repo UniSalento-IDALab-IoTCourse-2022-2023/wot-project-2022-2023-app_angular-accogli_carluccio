@@ -1,0 +1,19 @@
+<section class="workers-list-container">
+
+
+  <table style="margin-bottom: -8px;">
+    <thead>
+    <tr>
+      <th style="width: 224px; padding-left: 24px;">NAME</th>
+      <th style="width: 140px;">ROLE</th>
+      <th>SPECIFIC LICENCE</th>
+    </tr>
+    </thead>
+  </table>
+
+
+  <app-worker-card
+    *ngFor="let worker of workersList" [worker]="worker"
+    routerLink="/worker/{{worker.id}}"
+  ></app-worker-card>
+</section>

@@ -1,0 +1,33 @@
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; padding-top: 5%;">
+
+  <h1 style="font-weight: 400;">Site Safe Guard</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <h2 style="width: 100%;margin-bottom: 26px; margin-top: 0;margin-left: 32px;">Login</h2>
+
+    <div class="input-container">
+      <input type="text" id="username" required [(ngModel)]="username" name="name">
+      <label for="username" class="label">Username</label>
+      <div class="underline"></div>
+    </div>
+    <div class="input-container">
+      <input type="password" id="password" required [(ngModel)]="password" name="password">
+      <label for="password" class="label">Password</label>
+      <div class="underline"></div>
+    </div>
+
+
+
+    <input class="enabled" type="submit" value="Login" style="width: 100%; margin-top: 32px; margin-left: 32px; margin-right: 32px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8);">
+
+  </form>
+
+
+
+
+
+
+
+
+
+</body>

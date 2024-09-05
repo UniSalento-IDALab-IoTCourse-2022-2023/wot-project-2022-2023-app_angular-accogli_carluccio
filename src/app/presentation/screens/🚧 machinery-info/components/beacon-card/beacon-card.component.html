@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+
+  }
+</style>
+
+
+<div class="card-container" style="position: relative">
+  <!--     (mousemove)="onMouseMove($event)"-->
+  <!--     (mouseleave)="onMouseLeave()"-->
+  <!--     [style.transform]="transformStyle()">-->
+  <div class="flex-horizontal" style="gap: 16px;">
+    <h5>{{beacon.id}}</h5>
+  </div>
+  <div style="
+
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  ">
+    <h5 style="color: #000; display: flex; align-items: center; gap: 4px;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+        class="state-inactive"
+    >
+      <span class="material-symbols-outlined" style="font-size: 10px;">settings_input_antenna</span>
+    </h5>
+    <h5 style="flex-grow: 1;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+        class="state-inactive"
+    >{{beacon.macAddress}}</h5>
+
+  </div>
+
+
+  <div class="flex-horizontal" style="gap: 16px; justify-content: space-between">
+
+    <div class="flex-vertical alarm-info">
+      <label>Safety distance</label>
+      <h3>{{beacon.safetyDistance}}m</h3>
+    </div>
+
+    <div class="flex-vertical alarm-info">
+      <label>Position</label>
+      <h3>{{beacon.position}}</h3>
+    </div>
+
+  </div>
+
+
+  <button (click)="removeBeacon()"
+    class="hidden-button" style="
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: -12px;
+  margin-top: -8px;
+
+  display: flex; align-items: center; justify-content: center; width: 28px; height: 20px;  background: #ec6868; color: #ffffff; border: 0; border-radius: 8px; ">
+    <span class="material-symbols-outlined" style="font-size: 12px;">close</span>
+  </button>
+
+</div>
+

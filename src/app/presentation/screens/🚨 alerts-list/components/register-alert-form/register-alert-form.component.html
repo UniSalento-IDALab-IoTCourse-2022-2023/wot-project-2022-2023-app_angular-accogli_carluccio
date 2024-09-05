@@ -1,0 +1,53 @@
+<form (ngSubmit)="onSubmit()">
+  <h2 style="width: 100%;margin-bottom: 26px; margin-top: 0;margin-left: 32px;">Send communication</h2>
+
+  <div style="margin-bottom: 32px; margin-top: 8px; width: 100%; display: flex; flex-direction: row; align-items: start; justify-content: start; padding-left: 32px; gap: 24px; flex-wrap: wrap">
+
+    <div style="display: flex; flex-direction: column; align-items: start; justify-content: center; gap: 10px;">
+      <label for="selectInput" style="font-size: 16px;color: #333;">Priority</label>
+      <!--    <app-worker-role-selector></app-worker-role-selector>-->
+      <div id="add-option-button" style="position: relative;width: 300px;">
+        <!-- Div che funge da etichetta personalizzata -->
+        <div style="margin-top: 10px;
+
+              margin-top: 4px;
+
+              //background: #ccf1ff;
+              //color: #224e5e;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 4px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;"
+             class="tag">
+          {{selectedAlertPriority}}
+        </div>
+        <!-- Select nascosto visivamente -->
+        <select class="{{isFormEnabled ? ' enabled ' : ''}}" (change)="onMachineryTypeSelected($event)" id="selectInput" style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%;" [disabled]="!isFormEnabled">
+          <!-- Opzioni del select -->
+          <option value="" disabled selected hidden></option>
+          <option *ngFor="let key of alertPriorityKeys" value="{{key}}">{{key}}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="input-container">
+    <input type="text" id="message" required [(ngModel)]="message" name="message" [disabled]="!isFormEnabled">
+    <label for="message" class="label">Message</label>
+    <div class="underline"></div>
+  </div>
+
+  <input class="{{isFormEnabled ? ' enabled ' : ''}}" [disabled]="!isFormEnabled" type="submit" value="Register" style="width: 100%; margin-top: 32px; margin-left: 32px; margin-right: 32px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8);">
+
+</form>

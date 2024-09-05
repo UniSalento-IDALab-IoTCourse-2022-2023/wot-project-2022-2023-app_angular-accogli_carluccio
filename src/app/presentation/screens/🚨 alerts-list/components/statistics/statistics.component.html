@@ -1,0 +1,161 @@
+
+
+
+<div style="margin-bottom: 32px;">
+
+  <div class="card-container" style="margin-top: 16px; margin-right: 72px;">
+
+    <div class="flex-horizontal" style="gap: 8px;  padding-bottom: 16px; margin-right: 4px;">
+      <h5 (click)="showYearlyStatistics()" style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+          class="tag {{isTagSelected('Y')}}">
+        Yearly
+      </h5>
+
+      <h5 (click)="showMonthlyStatistics()" style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+          class="tag {{isTagSelected('M')}}">
+        Monthly
+      </h5>
+      <h5 (click)="showWeeklyStatistics()" style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+          class="tag {{isTagSelected('W')}}">
+        Weekly
+      </h5>
+      <h5 (click)="showDailyStatistics()" style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+          class="tag {{isTagSelected('D')}}">
+        Daily
+      </h5>
+
+    </div>
+
+
+
+
+
+    <div style="
+    display:flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: 0 44px;
+    gap: 64px;
+    flex-wrap: wrap;
+    ">
+      <div>
+        <ngx-charts-advanced-pie-chart
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="data"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-advanced-pie-chart>
+
+      </div>
+
+
+      <div *ngIf="statisticsAlerts != null && statisticsAlerts.top3MachineriesByAlarms.length != 0" style="
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 4px;
+    ">
+        <div>
+          <h5 style="
+        border-radius: 4px;
+        font-size: 20px;
+        font-weight: 600; margin-bottom: 8px;"
+          >Machineries with most alarms</h5>
+
+          <div *ngFor="let machinery of statisticsAlerts.top3MachineriesByAlarms" style="display: flex; gap: 8px; align-items: center">
+
+
+            <p style="background: #e0e0e0; border-radius: 4px; text-align: center; padding: 2px 8px; font-size: 12px; min-width: 8px;"><b>{{machinery.number}}</b></p>
+            <p routerLink="/machinery/{{machinery.machinery.id}}" style="line-height: 10px; cursor: pointer;">{{machinery.machinery.name}}</p>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div *ngIf="statisticsAlerts != null && statisticsAlerts.top3WorkersByAlarms.length != 0"
+        style="
+            display:flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 4px;
+      ">
+        <div style="display: flex; flex-direction: column; ">
+          <h5 style="
+        border-radius: 4px;
+        font-size: 20px;
+        font-weight: 600; margin-bottom: 8px;"
+          >Workers with most alarms</h5>
+
+          <div *ngFor="let worker of statisticsAlerts.top3WorkersByAlarms" style="display: flex; gap: 8px; align-items: center; justify-content: start">
+
+
+            <p style="background: #e0e0e0; border-radius: 4px; text-align: center; padding: 2px 8px; font-size: 12px; min-width: 8px;"><b>{{worker.number}}</b></p>
+            <p routerLink="/worker/{{worker.worker.id}}" style="line-height: 10px; cursor: pointer;">{{worker.worker.name}} {{worker.worker.surname}}</p>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+      <div style="flex-grow: 1"></div>
+
+    </div>
+
+
+
+
+    <div class="flex-horizontal" style="padding-left: 8px; padding-right: 8px; gap: 48px; justify-content: start; margin-left: 130px;">
+
+
+
+      <div *ngIf="statisticsAlerts != null && statisticsAlerts.totalAlerts != 0" class="flex-vertical alarm-info">
+        <h3>{{TimeHelper.formatSeconds(this.statisticsAlerts.averageDurationDistanceAlarms)}}</h3>
+        <label>Average alarm duration</label>
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+</div>
+

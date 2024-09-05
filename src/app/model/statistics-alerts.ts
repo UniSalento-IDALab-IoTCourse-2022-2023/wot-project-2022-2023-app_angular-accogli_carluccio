@@ -1,27 +1,23 @@
+import {AlertType} from "./alert/alert";
+import {Machinery} from "./machinery";
+import {Worker} from "./worker";
+
 export class StatisticsAlerts {
-  name: string
-  type: MachineryType
-  state: MachineryState
-  beaconsAssociated: Beacon[]
-  plate: MachineryPlate
-  spec: MachinerySpecifications
-  board_macBLE: string
-  isRemote: boolean
+  totalAlerts: number
+  averageDurationDistanceAlarms: number
+
+  alertsNumberByType: {alert: AlertType, number: number}[]
+
+  top3WorkersByAlarms: {worker: Worker, number: number}[]
+  top3MachineriesByAlarms: {machinery: Machinery, number: number}[]
 
 
-  constructor(id: string, name: string, type: MachineryType, state: MachineryState, beaconsAssociated: Beacon[], plate: MachineryPlate, spec: MachinerySpecifications, board_macBLE: string, isRemote: boolean) {
-    this.id = id;
-    this.name = name;
-    this.type = type;
-    this.state = state;
-    this.beaconsAssociated = beaconsAssociated;
-    this.plate = plate;
-    this.spec = spec;
-    this.board_macBLE = board_macBLE;
-    this.isRemote = isRemote;
+  constructor(totalAlerts: number, averageDurationDistanceAlarms: number, alertsNumberByType: {alert: AlertType, number: number}[], top3WorkersByAlarms: {worker: Worker, number: number}[], top3MachineriesByAlarms: {machinery: Machinery, number: number}[]) {
+    this.totalAlerts = totalAlerts;
+    this.averageDurationDistanceAlarms = averageDurationDistanceAlarms;
+    this.alertsNumberByType = alertsNumberByType;
+    this.top3WorkersByAlarms = top3WorkersByAlarms;
+    this.top3MachineriesByAlarms = top3MachineriesByAlarms;
   }
 
-  getRequiredLicence() {
-    return this.type.generalLicence
-  }
 }

@@ -10,10 +10,16 @@ export class WorkerDTOMapper {
     console.log(workerDTOList)
 
     return workerDTOList.map( workerDTO => {
+      return this.mapWorkerDTOToWorker(workerDTO)
+    })
+  }
+  public static mapWorkerDTOToWorker(
+    workerDTO: ApiWorkerDTO
+  ): Worker {
+
       // mapping
-      const role = (workerDTO.generalLicense == null || workerDTO.specificLicences == null) ? WorkerRole.Pedestrian : WorkerRole.Driver
-      console.log('dio')
-      console.log(workerDTO)
+      const role = (workerDTO.generalLicence == null || workerDTO.specificLicences == null) ? WorkerRole.Pedestrian : WorkerRole.Driver
+
       return new Worker(
         workerDTO.id,
         workerDTO.name,
@@ -22,10 +28,31 @@ export class WorkerDTOMapper {
         workerDTO.email,
         workerDTO.dateOfBirth,
         role,
-        workerDTO.generalLicense,
+        workerDTO.generalLicence,
         workerDTO.specificLicences
       )
-    });
+  }
+
+  public static mapWorkerToWorkerDTO(
+    worker: Worker
+  ): ApiWorkerDTO {
+
+    // mapping
+    console.log(worker)
+
+    return {
+      id: worker.id,
+      name: worker.name,
+      surname: worker.surname,
+      ssn: worker.ssn,
+      email: worker.email,
+      dateOfBirth: worker.dateOfBirth,
+
+      type: worker.role == WorkerRole.Driver ? "EQUIPMENT_OPERATOR" : "GROUND_WORKER",
+
+      generalLicence: worker.role == WorkerRole.Driver ? worker.generalLicence : undefined,
+      specificLicences: worker.role == WorkerRole.Driver ? worker.specificLicences : undefined
+    }
   }
 
 }

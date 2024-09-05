@@ -1,0 +1,230 @@
+/*@import '../../../../../../styles.scss';
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em - 2px),
+    calc(100% - 15px) calc(1em - 2px);
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+
+form {
+  background: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-radius: $border_radius_medium;
+  max-width: 410px;
+
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+
+.input-container {
+  position: relative;
+  margin: 32px;
+  width: 140px;
+  //width: 200px;
+
+}
+
+.input-container input[type="text"] {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-container .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #444;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input[type="text"]:focus ~ .label,
+.input-container input[type="text"]:valid ~ .label {
+  top: -20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+.input-container input[type="text"]:focus ~ .underline,
+.input-container input[type="text"]:valid ~ .underline {
+  transform: scaleX(1);
+}
+
+
+
+
+
+*/
+
+
+
+
+
+@import '../../../../../../styles.scss';
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em - 2px),
+    calc(100% - 15px) calc(1em - 2px);
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+/*#add-option-button {
+  padding-left: 70px;
+  padding-right: 70px;
+  transition: padding 0.3s ease;
+}
+#add-option-button:hover {
+  padding-left: 0;
+  padding-right: 0;
+  transition: padding 0.2s ease;
+}*/
+
+
+form {
+  background: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  border-radius: $border_radius_medium;
+  //width: 450px;
+  max-width: 850px;
+
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  border: 1px solid #DDDDDD;
+
+
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+}
+
+
+.input-container {
+  position: relative;
+  margin: 32px;
+  width: 170px;
+  //width: 200px;
+
+}
+
+.input-container input[type="text"] {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-container .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #444;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input[type="text"]:focus ~ .label,
+.input-container input[type="text"]:valid ~ .label {
+  top: -20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+.input-container input[type="text"]:focus ~ .underline,
+.input-container input[type="text"]:valid ~ .underline {
+  transform: scaleX(1);
+}
+
+
+.tag {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #DDDDDD;
+}
+
+#dimension::placeholder,
+#maximumLoad::placeholder,
+#operativeSpeed::placeholder,
+#macAddress::placeholder {
+  color: #FFF0; /* Colore del testo del placeholder */
+}
+#dimension:focus::placeholder,
+#maximumLoad:focus::placeholder,
+#operativeSpeed:focus::placeholder,
+#macAddress:focus::placeholder {
+  color: #999; /* Colore del testo del placeholder */
+}
+
+.enabled {
+  cursor: pointer;
+}

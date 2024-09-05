@@ -1,0 +1,17 @@
+<div class="switch-container">
+  <div *ngFor="let option of options">
+    <input type="checkbox" id="{{option.label}}" name="switch" value="{{option.label}}" style="display:none"
+           [checked]="this.licencesSelected.includes(option.label)"
+           (change)="onCheckboxChange(option, $event)"
+           [disabled]="disabled"
+    >
+    <label for="{{option.label}}" class="{{!disabled ? ' enabled ': ''}}">
+      <span class="material-symbols-outlined">id_card</span>
+      {{option.label}}
+    </label>
+  </div>
+  <!--  <div style="width: 2px; height: 24px; background: rgba(0,0,0,0.25)"></div>-->
+
+
+
+</div>

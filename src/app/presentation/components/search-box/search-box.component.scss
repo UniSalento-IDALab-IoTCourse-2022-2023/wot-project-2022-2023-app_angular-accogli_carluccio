@@ -1,0 +1,65 @@
+@import '../../../../styles.scss';
+
+div {
+  /* This bit sets up the horizontal layout */
+  display:flex;
+  flex-direction:row;
+
+  /* This bit draws the box around it */
+  border: 1px solid #CCC; ///$black_border;
+  border-radius: $border_radius_medium;
+
+  width: 340px;
+}
+
+input {
+  font-weight: 400;
+  font-size: 16px;
+  padding: 16px;
+
+  border-radius: 4px;
+  background-color: transparent;
+
+  border:none;
+  flex-grow: 1;
+
+  transition: font-size 0.1s;
+}
+
+input:focus{
+  outline: none;
+  font-size: 20px;
+  transition: font-size 0.1s;
+}
+
+
+
+/* Add the focus effect to the form so it contains the button */
+form:focus-within {
+  //background: #FFFFFF33;
+  //outline: 1px solid #FFFFFFCC;
+}
+
+button {
+  border: none;
+  padding: 16px;
+  background: transparent;
+}
+
+
+
+span {
+  cursor: pointer;
+  //font-size: 24px;
+  color: gray;
+}
+
+
+form:focus-within .material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  transition: font-variation-settings 0.1s;
+}

@@ -1,0 +1,130 @@
+<form (ngSubmit)="onSubmit()">
+  <h2 style="width: 100%;margin-bottom: 26px; margin-top: 0;margin-left: 32px;">Register machinery</h2>
+
+  <div style="margin-bottom: 32px; margin-top: 8px; width: 100%; display: flex; flex-direction: row; align-items: start; justify-content: start; padding-left: 32px; gap: 24px; flex-wrap: wrap">
+
+    <div style="display: flex; flex-direction: column; align-items: start; justify-content: center; gap: 10px;">
+      <label for="selectInput" style="font-size: 16px;color: #333;">Type</label>
+      <!--    <app-worker-role-selector></app-worker-role-selector>-->
+      <div id="add-option-button" style="position: relative;width: 300px;">
+        <!-- Div che funge da etichetta personalizzata -->
+        <div style="margin-top: 10px;
+
+              margin-top: 4px;
+
+              //background: #ccf1ff;
+              //color: #224e5e;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 4px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;"
+             class="tag">
+          <span *ngIf="selectedMachineryTypeId==''" style="font-size: 16px;" class="material-symbols-outlined">
+            add
+          </span>
+          {{selectedMachineryType?.name}}
+        </div>
+        <!-- Select nascosto visivamente -->
+        <select class="{{isFormEnabled ? ' enabled ' : ''}}" (change)="onMachineryTypeSelected($event)" id="selectInput" style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%;" [disabled]="!isFormEnabled">
+          <!-- Opzioni del select -->
+          <option value="" disabled selected hidden></option>
+          <option *ngFor="let machineryType of machineryTypeList" value="{{machineryType.id}}">{{machineryType.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: start; justify-content: center; gap: 10px;">
+      <label for="selectInput" style="font-size: 16px;color: #333;">Remote</label>
+      <!--    <app-worker-role-selector></app-worker-role-selector>-->
+      <div id="remote-option-button" style="position: relative;width: 64px;">
+        <!-- Div che funge da etichetta personalizzata -->
+        <div style="margin-top: 10px;
+
+              margin-top: 4px;
+
+              //background: #ccf1ff;
+              //color: #224e5e;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 4px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;"
+             class="tag">
+
+          {{this.isRemote ? 'Yes' : 'No'}}
+        </div>
+        <!-- Select nascosto visivamente -->
+        <label class="{{isFormEnabled ? ' enabled ' : ''}}" (click)="this.isFormEnabled ? this.isRemote = !this.isRemote : ''" id="isRemoteInput" style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%;">
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="input-container">
+    <input type="text" id="name" required [(ngModel)]="name" name="name" [disabled]="!isFormEnabled">
+    <label for="name" class="label">Name</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="dimension" required placeholder="WxHxD [m]" [(ngModel)]="dimension" name="dimension" [disabled]="!isFormEnabled">
+    <label for="dimension" class="label">Dimension</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="maximumLoad" required placeholder="[kg]"  [(ngModel)]="maximumLoad" name="maximumLoad" [disabled]="!isFormEnabled">
+    <label for="maximumLoad" class="label">Maximum Load</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="operativeSpeed" required placeholder="[km/h]"  [(ngModel)]="operativeSpeed" name="operativeSpeed" [disabled]="!isFormEnabled">
+    <label for="operativeSpeed" class="label">Operative speed</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="macAddress" required placeholder="XX:XX:XX:XX:XX:XX"  [(ngModel)]="macAddress" name="macAddress" [disabled]="!isFormEnabled">
+    <label for="macAddress" class="label">MAC Address</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="yearOfManufacture" required [(ngModel)]="yearOfManufacture" name="yearOfManufacture" [disabled]="!isFormEnabled">
+    <label for="yearOfManufacture" class="label">Year of manufacture</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="manufacturerName" required [(ngModel)]="manufacturerName" name="manufacturerName" [disabled]="!isFormEnabled">
+    <label for="manufacturerName" class="label">Manufacturer name</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="serialNumber" required [(ngModel)]="serialNumber" name="serialNumber" [disabled]="!isFormEnabled">
+    <label for="serialNumber" class="label">Serial number</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="model" required [(ngModel)]="model" name="model" [disabled]="!isFormEnabled">
+    <label for="model" class="label">Model</label>
+    <div class="underline"></div>
+  </div>
+
+
+  <input class="{{isFormEnabled ? ' enabled ' : ''}}" [disabled]="!isFormEnabled" type="submit" value="Register" style="width: 100%; margin-top: 32px; margin-left: 32px; margin-right: 32px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8);">
+
+</form>

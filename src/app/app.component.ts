@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HostConfigService} from "./services/host-config.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ssgapp';
+
+  constructor(private hostConfigService: HostConfigService) {
+    hostConfigService.updateEndpoints()
+    console.log("Endpoints aggiornati")
+  }
 }

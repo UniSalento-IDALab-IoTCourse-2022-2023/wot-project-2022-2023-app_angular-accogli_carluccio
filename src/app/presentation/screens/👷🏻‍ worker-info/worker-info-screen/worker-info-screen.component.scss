@@ -1,0 +1,87 @@
+
+body {
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 64px;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 64px;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.tag {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #DDDDDD;
+}
+
+
+
+
+
+
+body {
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 64px;
+}
+
+
+
+
+
+
+
+
+.card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+}
+
+
+
+
+
+
+label {
+  font-weight: 300;
+}
+h3 {
+  margin-top: 4px;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+
+  //width: 25%;
+}
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.driving-licence-container {
+
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+}
+
+.alarm-info {
+  //flex-basis: 45%;
+  //width:50%;
+}
+

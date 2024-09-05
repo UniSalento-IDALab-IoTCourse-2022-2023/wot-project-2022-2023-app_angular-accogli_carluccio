@@ -26,18 +26,19 @@ export class AlertDTOMapper {
       return new Alert(
         alertDTO.id,
         alertDTO.timestamp,
-        this.mapAlertTypeDTOtoAlertType(alertDTO.type),
+        this.mapAlertTypeDTOtoAlertType(alertDTO.type!),
         alertDTO.technologyID,
-        this.mapAlertPriorityDTOtoAlertPriority(alertDTO.priority),
+        this.mapAlertPriorityDTOtoAlertPriority(alertDTO.priority!),
         worker,
         machinery,
-        alertDTO.secondsDuration
+        alertDTO.secondsDuration,
+        alertDTO.description
       )
     }
     )
   }
 
-  private static mapAlertTypeDTOtoAlertType(alertTypeDTO: ApiAlertTypeDTO): AlertType {
+  public static mapAlertTypeDTOtoAlertType(alertTypeDTO: ApiAlertTypeDTO): AlertType {
     switch (alertTypeDTO) {
       case ApiAlertTypeDTO.GENERAL:
         return AlertType.General;
@@ -56,6 +57,24 @@ export class AlertDTOMapper {
         return AlertPriority.WARNING;
       case ApiAlertPriorityDTO.COMMUNICATION:
         return AlertPriority.COMMUNICATION;
+    }
+  }
+
+  static mapAlertToAlertDTO(alert: Alert): ApiAlertDTO {
+    return {
+      priority: this.mapAlertPriorityToAlertPriorityDTO(alert.priority!),
+      description: alert.message
+    }
+  }
+
+  private static mapAlertPriorityToAlertPriorityDTO(alertPriority: AlertPriority): ApiAlertPriorityDTO {
+    switch (alertPriority) {
+      case AlertPriority.DANGER:
+        return ApiAlertPriorityDTO.DANGER;
+      case AlertPriority.WARNING:
+        return ApiAlertPriorityDTO.WARNING;
+      case AlertPriority.COMMUNICATION:
+        return ApiAlertPriorityDTO.COMMUNICATION;
     }
   }
 }

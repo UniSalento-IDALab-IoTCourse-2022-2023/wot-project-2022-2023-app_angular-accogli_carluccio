@@ -1,0 +1,89 @@
+@import '../../../../../../styles.scss';
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  padding-top: $card_vertical_inset;
+  padding-bottom: $card_vertical_inset;
+  padding-left: $card_horizontal_inset;
+  padding-right: $card_horizontal_inset;
+
+  background: $card_background;
+
+  //width: 30%;
+  width: 320px;
+
+  gap: 8px;
+
+  border-radius: $border_radius_medium;
+
+  //min-height: 150px;
+
+  border: 1px solid #DDDDDD;
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+.card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+}
+
+.card-container > * {
+  cursor: default;
+}
+
+
+
+
+
+label {
+  font-weight: 300;
+}
+h3 {
+  margin-top: 4px;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+
+  //width: 25%;
+}
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.driving-licence-container {
+
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+}
+
+.alarm-info {
+  flex-basis: 45%;
+  //width:50%;
+}
+
+.high-priority {
+  background: $high_priority_background_color;
+  color: $high_priority_foreground_color;
+}
+
+.medium-priority {
+  background: $medium_priority_background_color;
+  color: $medium_priority_foreground_color;
+}
+
+.low-priority {
+  background: $low_priority_background_color;
+  color: $low_priority_foreground_color;
+}

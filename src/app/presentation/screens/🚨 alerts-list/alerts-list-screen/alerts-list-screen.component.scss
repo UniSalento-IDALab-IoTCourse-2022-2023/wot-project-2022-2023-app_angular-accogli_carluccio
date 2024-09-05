@@ -1,0 +1,54 @@
+body {
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 64px;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 64px;
+}
+
+
+
+
+
+
+
+
+// Per i filters
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.tag {
+  background: #ffffff;
+  color: #000000;
+
+  border: 1px solid #DDDDDD;
+  cursor: pointer;
+}
+
+.selected {
+  background: #ffffff;
+  color: #000000;
+}
+.unselected {
+  background: #ffffff;
+  color: #b0b0b0;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+<section class="alerts-list-container">
+  <app-machinery-card
+    *ngFor="let machinery of machineriesList" [machinery]="machinery"
+    routerLink="/machinery/{{machinery.id}}"
+  ></app-machinery-card>
+</section>

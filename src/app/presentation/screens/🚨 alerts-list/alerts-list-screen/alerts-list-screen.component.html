@@ -1,0 +1,161 @@
+<body xmlns="http://www.w3.org/1999/html">
+  <app-navigation-section></app-navigation-section>
+
+  <div style="margin-bottom: 32px;">
+    <app-text-title [title]="'Alerts'"></app-text-title>
+  </div>
+
+  <section class="actions-container">
+    <app-selection-period-switch [isTodaySelected]="isTodaySelected" (isTodaySelectedChange)="onTimeSwitchChange($event)"></app-selection-period-switch>
+
+    <app-search-box (search)="handleSearch($event)"></app-search-box>
+
+    <section style="display: flex; flex-direction: column; gap: 8px;">
+      <div class="flex-horizontal" style="gap: 8px; padding-top: 0px; padding-bottom: 0px;">
+        <p style="margin: 0; font-size: 12px; width: 52px; color: gray">TYPE</p>
+        <div style="display: inline-block">
+          <h5 (click)="toggleFilterByAlertType(undefined)"
+            style="
+                  display: flex; align-items: center; gap: 4px;
+                  padding: 4px;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  border-radius: 4px;
+                  font-size: 12px;
+                  font-weight: 600;
+                  white-space: nowrap;
+                  "
+              class="tag {{selectedAlertTypes.length == 0 ? ' selected ' : 'unselected'}}" >All
+          </h5>
+        </div>
+
+        <h5 (click)="toggleFilterByAlertType(AlertType.General)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertTypes.includes(AlertType.General) ? ' selected ' : 'unselected'}}">
+          General
+        </h5>
+        <h5 (click)="toggleFilterByAlertType(AlertType.Distance)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertTypes.includes(AlertType.Distance) ? ' selected ' : 'unselected'}}">
+          Distance
+        </h5>
+        <h5 (click)="toggleFilterByAlertType(AlertType.DriverAway)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertTypes.includes(AlertType.DriverAway) ? ' selected ' : 'unselected'}}">
+          Driver away
+        </h5>
+
+      </div>
+
+
+      <div class="flex-horizontal" style="gap: 8px; padding-top: 0px; padding-bottom: 0px;">
+        <p style="margin: 0; font-size: 12px; width: 52px; color: gray">PRIORITY</p>
+        <div style="display: inline-block">
+          <h5 (click)="toggleFilterByAlertPriority(undefined)"
+              style="
+                  display: flex; align-items: center; gap: 4px;
+                  padding: 4px;
+                  padding-left: 8px;
+                  padding-right: 8px;
+                  border-radius: 4px;
+                  font-size: 12px;
+                  font-weight: 600;
+                  white-space: nowrap;
+                  "
+              class="tag {{selectedAlertPriorities.length == 0 ? ' selected ' : 'unselected'}}">
+<!--            <span class="material-symbols-outlined" style="font-size: 20px;">filter_alt</span>-->
+            All
+          </h5>
+        </div>
+
+        <h5 (click)="toggleFilterByAlertPriority(AlertPriority.DANGER)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertPriorities.includes(AlertPriority.DANGER) ? ' selected ' : 'unselected'}}">
+          Danger
+        </h5>
+        <h5 (click)="toggleFilterByAlertPriority(AlertPriority.WARNING)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertPriorities.includes(AlertPriority.WARNING) ? ' selected ' : 'unselected'}}">
+          Warning
+        </h5>
+        <h5 (click)="toggleFilterByAlertPriority(AlertPriority.COMMUNICATION)"
+            style="display: inline-block;
+                padding: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                white-space: nowrap;
+                "
+            class="tag {{selectedAlertPriorities.includes(AlertPriority.COMMUNICATION) ? ' selected ' : 'unselected'}}">
+          Communication
+        </h5>
+
+      </div>
+
+    </section>
+
+
+
+
+
+
+
+
+    <div style="flex-grow: 1"></div>
+    <input *ngIf="isTodaySelected" (click)="showLaunchGeneralAlertForm()" type="button" value="{{isShowingLaunchGeneralAlertForm ? 'Cancel' : 'Send communication'}}" style="width: 160px; padding-left: 16px; padding-right: 16px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8); cursor: pointer; margin-right: 32px;">
+
+  </section>
+
+  <div style="margin-top: 64px;">
+    <app-statistics *ngIf="!isTodaySelected" @listAnimation></app-statistics>
+
+    <section *ngIf="isTodaySelected" style="margin-top: 64px; margin-bottom: 32px; z-index: -1;" [@formAnimation]="isShowingLaunchGeneralAlertForm ? 'visible' : 'hidden'">
+      <app-register-alert-form [isFormEnabled]="isShowingLaunchGeneralAlertForm" (formSubmitted)="onFormSubmitted($event)"></app-register-alert-form>
+      <!--    <app-register-machinery-form [isFormEnabled]="false"  [machineryTypeList]="machineryTypeList" (formSubmitted)="onFormSubmitted($event)"></app-register-machinery-form>-->
+    </section>
+
+    <app-alerts-list [alertList]="filteredAlertList"></app-alerts-list>
+  </div>
+</body>

@@ -1,0 +1,210 @@
+
+<body>
+<app-navigation-section></app-navigation-section>
+
+<div *ngIf="machinery != null" style="margin-bottom: 32px;">
+  <app-text-title [title]="this.machinery!.name"></app-text-title>
+  <div class="flex-horizontal" style="gap: 8px; padding-top: 8px; padding-bottom: 12px;">
+    <h5 style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+        class="tag">
+      {{machinery.type.name}}
+    </h5>
+
+    <h5 style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+        class="tag">
+      {{machinery.spec.dimensions}} (WxHxD)
+    </h5>
+    <h5 style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+        class="tag">
+      {{machinery.spec.mass}} kg
+    </h5>
+    <h5 style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+        class="tag">
+      {{machinery.spec.operatingSpeed}} km/h
+    </h5>
+    <h5 style="display: inline-block;
+              padding: 4px;
+              padding-left: 8px;
+              padding-right: 8px;
+              border-radius: 4px;
+              font-size: 12px;
+              font-weight: 600;
+              white-space: nowrap;
+              "
+        class="tag">
+      {{machinery.board_macBLE}}
+    </h5>
+
+  </div>
+
+
+
+  <div class="card-container" style="margin-top: 16px;">
+
+    <div style="
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    ">
+      <h5 style="flex-grow: 1;
+        padding: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;"
+          class="{{machineryStatusClass()}}"
+      >{{machinery.state}}</h5>
+      <h5 style="color: #000; display: flex; align-items: center; gap: 4px;
+        padding: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;"
+          class="{{machineryStatusClass()}}"
+      >
+        <span class="material-symbols-outlined" style="font-size: 10px;">settings_input_antenna</span>{{machinery.beaconsAssociated.length}}
+      </h5>
+    </div>
+
+
+
+
+
+    <div class="flex-horizontal" style="padding-left: 8px; padding-right: 8px; gap: 16px; justify-content: space-between">
+
+      <div class="flex-vertical alarm-info">
+        <label>Required Licence</label>
+        <h3>{{machinery.getRequiredLicence()}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Required specific licence</label>
+        <h3>{{machinery.type.requiredSpecificLicence ? "Yes "+"("+ machinery.type.name +")" : "No"}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Remote</label>
+        <h3>{{machinery.isRemote ? "Yes" : "No"}}</h3>
+      </div>
+
+
+    </div>
+
+    <div>
+      <div style="height: 2px; background-color: #00000033; border-radius: 5px; margin: 16px 10px;"></div>
+
+    </div>
+
+
+
+
+
+<!--
+
+    <div class="flex-horizontal" style="padding-left: 8px; padding-right: 8px; gap: 16px; justify-content: space-between">
+
+      <div class="flex-vertical alarm-info">
+        <label>Dimensions</label>
+        <h3>{{machinery.spec.dimensions}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Maximum Load</label>
+        <h3>{{machinery.spec.mass}} kg</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Operative Speed</label>
+        <h3>{{machinery.spec.operatingSpeed}} km/h</h3>
+      </div>
+
+      <!-    <div class="flex-vertical alarm-info">->
+      <!-      <label>Required Licence</label>->
+      <!-      <h3>{{machinery.getRequiredLicence()}}</h3>->
+      <!-    </div>->
+
+    </div>
+-->
+
+    <div class="flex-horizontal" style="padding-left: 8px; padding-right: 8px; gap: 16px; justify-content: space-between">
+
+      <div class="flex-vertical alarm-info">
+        <label>Model</label>
+        <h3>{{machinery.plate.model}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Serial Number</label>
+        <h3>{{machinery.plate.serialNumber}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Year of Manufacture</label>
+        <h3>{{machinery.plate.yearOfManufacture}}</h3>
+      </div>
+
+      <div class="flex-vertical alarm-info">
+        <label>Manufacturer</label>
+        <h3>{{machinery.plate.manufacturerName}}</h3>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+
+<div *ngIf="machinery != null" style="margin-top: 64px;">
+
+
+<!--  BEACONS  -->
+  <h3>Beacons associated</h3>
+  <div class="flex-horizontal"
+  style="gap: 16px; margin-top: 16px;">
+    <app-beacon-card *ngFor="let beacon of machinery.beaconsAssociated" [beacon]="beacon" (beaconRemoved)="onBeaconRemoved($event)" @listAnimation></app-beacon-card>
+    <app-beacon-form [isFormEnabled]="isShowingRegisterBeaconForm" (formSubmitted)="onFormSubmitted($event)" ></app-beacon-form>
+  </div>
+
+
+
+</div>
+</body>

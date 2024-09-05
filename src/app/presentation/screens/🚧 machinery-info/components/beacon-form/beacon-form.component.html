@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+
+  }
+</style>
+
+
+<div
+     [ngClass]="getContainerClass()"
+     style="display: flex; align-items: center;"
+>
+
+  <div class="enabled add-new-beacon-button " (click)="showForm()" *ngIf="!isFormEnabled">+</div>
+
+  <form *ngIf="isFormEnabled" (ngSubmit)="onSubmit()">
+
+    <div class="input-container">
+      <input type="text" id="position" required [(ngModel)]="position" name="position" [disabled]="!isFormEnabled">
+      <label for="position" class="label">Position</label>
+      <div class="underline"></div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="macAddress" required placeholder="XX:XX:XX:XX:XX:XX"  [(ngModel)]="macAddress" name="macAddress" [disabled]="!isFormEnabled">
+      <label for="macAddress" class="label">MAC Address</label>
+      <div class="underline"></div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="safetyDistance" required placeholder="[m]" [(ngModel)]="safetyDistance" name="safetyDistance" [disabled]="!isFormEnabled">
+      <label for="safetyDistance" class="label">Safety distance</label>
+      <div class="underline"></div>
+    </div>
+
+
+
+
+    <input class="{{isFormEnabled ? ' enabled ' : ''}}" [disabled]="!isFormEnabled" type="button" value="Cancel" (click)="hideForm()" style="width: 160px; height: 32px; background: #b0b0b0; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(82,82,82,0.8);">
+    <input class="{{isFormEnabled ? ' enabled ' : ''}}" [disabled]="!isFormEnabled" type="submit" value="Add beacon" style="width: 160px; height: 32px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8);">
+
+
+  </form>
+
+</div>

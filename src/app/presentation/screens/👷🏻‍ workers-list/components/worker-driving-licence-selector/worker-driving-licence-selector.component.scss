@@ -1,0 +1,63 @@
+.switch-container {
+  display:flex;
+  align-items: center;
+  //background: rgb(89, 126, 155);
+  border-radius: 8px;
+  gap:8px;
+  //padding: 8px;
+  //padding-top: 6px;
+  padding-bottom: 6px;
+
+}
+
+
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  width: 48px;
+}
+
+
+
+label {
+  padding: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 8px;
+  color: #0005;
+  background: white;
+
+  border: 1px solid #6c6c6c;//rgb(89, 126, 155);
+
+  transition: border 0.2s;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  //width: 100px;
+
+}
+
+/* Stile del label quando il radiobutton è selezionato */
+input[type="checkbox"]:checked + label {
+  color: black;
+  background: white;
+
+  border: 1px solid rgb(89, 126, 155);
+
+}
+
+.enabled {
+  cursor: pointer;
+}
+
+span {
+  font-size: 16px;
+
+}
+
+

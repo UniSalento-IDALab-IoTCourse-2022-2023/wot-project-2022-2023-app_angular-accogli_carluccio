@@ -1,0 +1,78 @@
+@import '../../../../../../styles.scss';
+
+.row-container {
+  display: flex;
+  align-items: center;
+  padding-top: $row_vertical_inset;
+  padding-bottom: $row_vertical_inset;
+  padding-left: $row_horizontal_inset;
+  padding-right: $row_horizontal_inset;
+
+  background: $row_background;
+
+  //width: 70%;
+  column-gap: 10%;
+
+  border-radius: $border_radius_medium;
+
+  border: 1px solid #DDDDDD;
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+.row-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+}
+
+.row-container, .row-container > * {
+  cursor: pointer;
+}
+
+
+
+label {
+  font-weight: 300;
+}
+h3 {
+  margin-top: 4px;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+
+
+  //width: 25%;
+}
+
+.driving-licence-container {
+
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+}
+
+
+
+
+/*
+.role-driver {
+  background: #ccf1ff;
+  color: #224e5e;
+}
+
+.role-pedestrian {
+  background: #eaeaea;
+  color: #5b5b5b;
+}
+*/
+
+
+.tag {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #DDDDDD;
+}

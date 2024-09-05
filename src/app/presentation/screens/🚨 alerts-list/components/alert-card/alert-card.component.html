@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+
+  }
+</style>
+
+
+<div class="card-container">
+<!--     (mousemove)="onMouseMove($event)"-->
+<!--     (mouseleave)="onMouseLeave()"-->
+<!--     [style.transform]="transformStyle()">-->
+  <div class="flex-horizontal" style="gap: 16px;">
+    <h5>{{alertCardInterface.date}}</h5>
+    <h5 style="
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    " class="{{priorityClass()}}">{{priority()}}</h5>
+  </div>
+  <div style="
+
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  ">
+<!--    #D2D9FF99 -->
+    <h5 style="flex-grow: 1; display:flex; align-items: center; gap: 4px;
+      background: rgba(239,239,239,0.6);;
+      color: black;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+    >
+      <span class="material-symbols-outlined"style="font-size: 14px;">notifications</span>{{alertCardInterface.type.toUpperCase()}}
+    </h5>
+    <h5 *ngIf="alertCardInterface.type == AlertType.Distance" style="color: #000; display: flex; align-items: center; gap: 4px;
+      background: rgba(239,239,239,0.6);;
+      color: black;
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;"
+    >
+      <span class="material-symbols-outlined" style="font-size: 10px;">schedule</span>{{alertCardInterface.duration}}
+    </h5>
+  </div>
+
+
+  <div class="flex-horizontal" style="gap: 16px; justify-content: space-between">
+    <div class="flex-vertical alarm-info" *ngFor="let info of Object.entries(alertCardInterface.infos)">
+      <label>{{info[0]}}</label>
+      <h3>{{info[1]}}</h3>
+    </div>
+  </div>
+
+
+
+
+</div>

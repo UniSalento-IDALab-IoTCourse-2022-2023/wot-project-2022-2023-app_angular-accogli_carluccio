@@ -1,0 +1,121 @@
+@import '../../../../../../styles.scss';
+
+body {
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 64px;
+}
+
+
+
+
+
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  padding-top: $card_vertical_inset;
+  padding-bottom: $card_vertical_inset;
+  padding-left: $card_horizontal_inset;
+  padding-right: $card_horizontal_inset;
+
+  background: $card_background;
+
+  //width: 30%;
+  max-width: 1478px;
+
+  //gap: 8px;
+
+  border-radius: $border_radius_medium;
+
+  //min-height: 150px;
+
+  border: 1px solid #DDDDDD;
+
+  //transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/*
+.card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.4s ease;
+}*/
+
+
+
+
+
+
+label {
+  font-weight: 300;
+}
+h3 {
+  margin-top: 4px;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+
+  //width: 25%;
+}
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.driving-licence-container {
+
+  flex-grow: 1;
+  display: flex;
+  gap: 16px;
+}
+
+.alarm-info {
+  //flex-basis: 45%;
+  //width:50%;
+}
+
+
+
+$state_to_configure_background_color: rgba(255, 227, 210, 0.6);
+$state_inactive_background_color: rgb(236, 236, 236);
+$state_active_background_color: rgba(187, 224, 186, 0.6);
+
+$state_to_configure_foreground_color: rgba(133, 51, 0, 0.6);
+$state_inactive_foreground_color: rgb(103, 103, 103);
+$state_active_foreground_color: rgba(4, 65, 2, 0.6);
+
+.state-active {
+  background: $state_active_background_color;
+  color: $state_active_foreground_color;
+}
+
+.state-inactive {
+  background: $state_inactive_background_color;
+  color: $state_inactive_foreground_color;
+}
+
+.state-to-configure {
+  background: $state_to_configure_background_color;
+  color: $state_to_configure_foreground_color;
+}
+
+
+
+.tag {
+  background: #ffffff;
+  color: #000000;
+
+  border: 1px solid #DDDDDD;
+  cursor: pointer;
+}
+
+.selected{
+  border: 1px solid #000;
+
+}

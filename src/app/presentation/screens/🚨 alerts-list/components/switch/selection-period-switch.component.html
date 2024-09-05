@@ -1,0 +1,17 @@
+<div class="switch-container">
+
+  <input type="radio" id="all" name="switch" value="all" style="display:none"
+         [checked]="!isTodaySelected"
+         (click)="isTodaySelectedChange.emit(false)"
+  >
+  <label for="all">ALL</label>
+
+  <div style="width: 2px; height: 24px; background: rgba(0,0,0,0.25)"></div>
+
+  <input type="radio" id="live" name = "switch" value="live" style="display: none"
+         [checked]="isTodaySelected"
+         (click)="isTodaySelectedChange.emit(true)"
+  >
+  <label for="live" style="display:flex; align-items: center; gap: 4px;"><div class="live-dot"></div>TODAY</label>
+
+</div>

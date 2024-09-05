@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24;
+    transition: font-variation-settings 0.2s;
+  }
+</style>
+
+
+<body>
+  <app-navigation-section></app-navigation-section>
+
+  <div style="margin-bottom: 32px;">
+    <app-text-title [title]="'Workers'"></app-text-title>
+  </div>
+
+  <section class="actions-container" style="justify-content: space-between">
+    <app-search-box></app-search-box>
+
+    <input (click)="showRegisterWorkerForm()" type="button" value="{{isShowingRegisterWorkerForm ? 'Cancel' : 'Register worker'}}" style="width: 160px; padding-left: 16px; padding-right: 16px; height: 42px; background: #6c6c6c; color: #ffffff; border: 0; border-radius: 8px; box-shadow: 0 4px 1px rgba(0,0,0,0.8); cursor: pointer; margin-right: 32px;">
+
+  </section>
+
+  <section style="position:relative">
+    <section style="margin-top: 64px; margin-bottom: -32px; z-index: -1;" [@formAnimation]="isShowingRegisterWorkerForm ? 'visible' : 'hidden'">
+      <app-register-worker-form [isFormEnabled]="isShowingRegisterWorkerForm"  [machineryTypesWithSpecificLicence]="machineryTypesWithSpecificLicence" (formSubmitted)="onFormSubmitted($event)"></app-register-worker-form>
+<!--      <app-register-worker-form [isFormEnabled]="false"  [machineryTypesWithSpecificLicence]="machineryTypesWithSpecificLicence" (formSubmitted)="onFormSubmitted($event)"></app-register-worker-form>-->
+    </section>
+
+    <div style="margin-top: 64px; position: relative; z-index: 1;">
+      <app-workers-list [workersList]="workerList"></app-workers-list>
+    </div>
+  </section>
+
+</body>

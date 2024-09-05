@@ -1,0 +1,15 @@
+
+body {
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 64px;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 64px;
+}
+

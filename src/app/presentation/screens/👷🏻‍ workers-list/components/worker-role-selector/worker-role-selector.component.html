@@ -1,0 +1,27 @@
+<div class="switch-container {{!disabled ? ' enabled ': ''}}">
+
+
+
+<!--  <div style="width: 2px; height: 24px; background: rgba(0,0,0,0.25)"></div>-->
+
+  <input type="radio" id="pedestrian" name = "switch" value="pedestrian" style="display: none"
+         [checked]="workerRole == WorkerRole.Pedestrian"
+         (change)="workerRole = WorkerRole.Pedestrian"
+         [disabled]="disabled"
+  >
+  <label for="pedestrian" style="display:flex; align-items: center; gap: 4px;">
+    <span class="material-symbols-outlined">footprint</span>
+    PEDESTRIAN
+  </label>
+
+  <input type="radio" id="driver" name="switch" value="driver" style="display:none"
+         [checked]="workerRole == WorkerRole.Driver"
+         (change)="workerRole = WorkerRole.Driver"
+         [disabled]="disabled"
+  >
+  <label for="driver">
+    <span class="material-symbols-outlined">precision_manufacturing</span>
+    DRIVER
+  </label>
+
+</div>

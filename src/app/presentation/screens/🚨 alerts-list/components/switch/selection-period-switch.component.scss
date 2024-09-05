@@ -1,0 +1,76 @@
+.switch-container {
+  display:flex;
+  align-items: center;
+  background: rgb(255,255,255);
+  border-radius: 8px;
+  gap:4px;
+  padding: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  border: 1px solid #DDDDDD;
+}
+
+
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+
+label {
+  padding: 16px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  ///background: #868686;
+
+  transition: border 0.2s;
+}
+
+/* Stile del label quando il radiobutton è selezionato */
+input[type="radio"]:checked + label {
+  color:black;
+  background: #ffffff;
+
+  border: 2px solid transparent;
+
+}
+
+input[type="radio"]:checked + label > .live-dot {
+  background: #ff4646;
+
+  animation: blink-animation 2s infinite;
+  //animation: blink-animation 10.5s steps(4, start) infinite;
+}
+
+
+.live-dot{
+  width: 8px;
+  height: 8px;
+
+  background: rgba(255, 70, 70, 0.5);
+
+  border-radius: 100%;
+}
+
+* {
+  cursor: pointer;
+}
+
+
+/*
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}*/
+
+@keyframes blink-animation {
+  0%, 15% { opacity: 0; }
+  15%, 20% { opacity: 1; }
+  20%, 45% { opacity: 0; }
+  45%, 100% { opacity: 1; }
+}

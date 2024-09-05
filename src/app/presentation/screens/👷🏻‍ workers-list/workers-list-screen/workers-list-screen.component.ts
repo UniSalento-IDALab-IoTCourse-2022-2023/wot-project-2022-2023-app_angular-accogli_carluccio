@@ -64,7 +64,7 @@ export class WorkersListScreenComponent implements OnInit{
 
     await this.loadWorkers();
   }
-
+//
   async loadWorkers() {
     try {
       // Avvia entrambe le richieste contemporaneamente usando Promise.all
